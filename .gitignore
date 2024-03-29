@@ -1,0 +1,30 @@
+.vscode/
+
+# Compiled object files
+*.o
+*.obj
+*.bin
+
+# Executables
+bin/
+*.exe
+
+# Build directory
+build/
+testing/
+
+# Dependency and package management directories
+vendor/
+lib/
+libs/
+
+# macOS-specific
+.DS_Store
+
+# Linux-specific
+*.out
+*.so
+*.a
+
+# Windows-specific
+Thumbs.db
