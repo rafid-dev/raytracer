@@ -14,7 +14,7 @@ namespace data {
     private:
         // Templated arithmetic operation for vector-vector operations
         template <typename Function>
-        Vector<TYPE, SIZE> arithmetic_operation(const Vector<TYPE, SIZE>& other, Function op) const {
+        auto arithmetic_operation(const Vector<TYPE, SIZE>& other, Function op) const {
             Vector<TYPE, SIZE> result;
             std::transform(this->begin(), this->end(), other.begin(), result.begin(), op);
             return result;
@@ -22,7 +22,7 @@ namespace data {
 
         // Templated arithmetic operation for vector-scalar operations
         template <typename Function>
-        Vector<TYPE, SIZE> arithmetic_operation(const TYPE val, Function op) const {
+        auto arithmetic_operation(const TYPE val, Function op) const {
             Vector<TYPE, SIZE> result;
             result.fill(val);
             std::transform(this->begin(), this->end(), result.begin(), result.begin(), op);
