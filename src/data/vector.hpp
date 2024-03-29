@@ -97,40 +97,56 @@ namespace data {
         /*//////////////////////////////////////////////
             vector-vector arithmetic assignment overloads
         *//////////////////////////////////////////////
-        void operator+=(const Vector<TYPE, SIZE>& other) {
+        auto& operator+=(const Vector<TYPE, SIZE>& other) {
             *this = *this + other;
+            
+            return *this;
         }
 
-        void operator-=(const Vector<TYPE, SIZE>& other) {
+        auto& operator-=(const Vector<TYPE, SIZE>& other) {
             *this = *this - other;
+            
+            return *this;
         }
 
-        void operator*=(const Vector<TYPE, SIZE>& other) {
+        auto& operator*=(const Vector<TYPE, SIZE>& other) {
             *this = *this * other;
+            
+            return *this;
         }
 
-        void operator/=(const Vector<TYPE, SIZE>& other) {
+        auto& operator/=(const Vector<TYPE, SIZE>& other) {
             *this = *this / other;
+            
+            return *this;
         }
 
         /*//////////////////////////////////////////////
             vector-scalar arithmetic assignment overloads
         *//////////////////////////////////////////////
 
-        void operator+=(const TYPE val) {
+        auto& operator+=(const TYPE val) {
             *this = *this + val;
+            
+            return *this;
         }
 
-        void operator-=(const TYPE val) {
+        auto& operator-=(const TYPE val) {
             *this = *this - val;
+            
+            return *this;
         }
 
-        void operator*=(const TYPE val) {
+        auto& operator*=(const TYPE val) {
             *this = *this * val;
+            
+            return *this;
         }
 
-        void operator/=(const TYPE val) {
+        auto& operator/=(const TYPE val) {
             *this = *this / val;
+            
+            return *this;
         }
 
         /*//////////////////////////////////////////////
@@ -157,11 +173,15 @@ namespace data {
             return !(*this == val);
         }
 
-        // Negation operator
+        // Unary negation
         Vector<TYPE, SIZE> operator-() const {
             return *this * -1;
         }
 
+        /*//////////////////////////////////////////////
+                    vector operations
+        *//////////////////////////////////////////////
+        
         TYPE sum() const {
             return std::accumulate(this->begin(), this->end(), 0);
         }
@@ -178,8 +198,10 @@ namespace data {
             return *this / this->length();
         }
 
-        void normalise() {
+        auto& normalise() {
             *this /= this->length();
+
+            return *this;
         }
 
         /*/////////////////////////
