@@ -5,6 +5,7 @@
 #include <cassert>
 #include <functional>
 #include <initializer_list>
+#include <numeric>
 
 namespace data {
 
@@ -159,6 +160,26 @@ namespace data {
         // Negation operator
         Vector<TYPE, SIZE> operator-() const {
             return *this * -1;
+        }
+
+        TYPE sum() const {
+            return std::accumulate(this->begin(), this->end(), 0);
+        }
+
+        TYPE dot(const Vector<TYPE, SIZE>& other) const {
+            return std::inner_product(this->begin(), this->end(), other.begin(), 0);
+        }
+
+        TYPE length() const {
+            return std::sqrt(dot(*this));
+        }
+
+        auto normalised() const {
+            return *this / this->length();
+        }
+
+        void normalise() {
+            *this /= this->length();
         }
 
         /*/////////////////////////
